@@ -1,2 +1,4 @@
-# Storage-and-Buffer-Manager-ustc-lab-
-(Storage and Buffer Manager Lab)  For “Advanced Database Technologies” 2022
+# Storage-and-Buffer-Manager (ustc adb lab)
+Storage and Buffer Manager
+Lab Description
+For “Advanced Database Technologies” 2022
