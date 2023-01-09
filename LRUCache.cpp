@@ -8,6 +8,7 @@ LRUCache::LRUCache(int capacity) : cap(capacity) {
 }
 int LRUCache::get(int key) {
     if (map.find(key) == map.end()) return -1;
+    // 如果 key 存在，先通过哈希表定位，再移到头部
     auto key_value = *map[key];
     cache.erase(map[key]);
     cache.push_front(key_value);
