@@ -57,7 +57,7 @@ class BufMgr {
     std::vector<bFrame> buf;     // buffer
     std::vector<BCB> frame2page; // 存储着frame->BCB(page)的数据
     LRUCache lruCache;           // lru内部包含 page(key) -> frame(getValue)
-    std::deque<int> freeFrame;   // 存储空闲frame id
+    std::deque<int> freeFrame;   // 存储空闲frame id的队列
     DSMgr dsMgr{};
     int ICnt{}, OCnt{}, hitCnt{};
     // 程序结束时打印bufMgr性能

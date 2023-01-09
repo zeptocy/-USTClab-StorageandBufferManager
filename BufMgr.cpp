@@ -51,7 +51,7 @@ int BufMgr::SelectVictim() {
         return frameId;
     }
     // 没有空闲frame 需要lru替换
-    frameId = lruCache.getTail()->value;
+    frameId = lruCache.getTail().second;
     return frameId;
 }
 

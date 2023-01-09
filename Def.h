@@ -11,12 +11,12 @@ constexpr int FRAMESIZE = 4096;
 constexpr int MAXPAGES = 100000; // 本实验 MAXPAGES = 50,000
 constexpr int RWCOUNT = 500000;
 
-// 实际存储page的地方//
+// 页框，用于存储page内容
 struct bFrame {
     char field[FRAMESIZE];
 };
 
-// BCB结构体//
+// BCB结构体，存储了frame->page的内容信息
 struct BCB {
     int page_id = -1;
     int dirty = 0;

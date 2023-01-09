@@ -9,6 +9,7 @@
 
 #include <cstdio>
 
+//Data and Storage Manager 仅实现了读写指定页功能
 class DSMgr {
   public:
     //    DSMgr();

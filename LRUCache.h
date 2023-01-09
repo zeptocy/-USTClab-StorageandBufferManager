@@ -4,48 +4,24 @@
 
 #ifndef STORAGEBUFFERMANAGER_LRUCACHE_H
 #define STORAGEBUFFERMANAGER_LRUCACHE_H
-#include <memory>
 #include <unordered_map>
-
-//双链表，用于辅助LRU实现结构
-struct DLinkedNode {
-    int key, value;
-    std::shared_ptr<DLinkedNode> prev;
-    std::shared_ptr<DLinkedNode> next;
-    DLinkedNode() : key(0), value(0), prev(nullptr), next(nullptr) {}
-    DLinkedNode(int _key, int _value)
-        : key(_key),
-          value(_value),
-          prev(nullptr),
-          next(nullptr) {}
-};
+#include <list>
 
 class LRUCache {
   public:
-    explicit LRUCache(int _capacity);
+    explicit LRUCache(int capacity);
 
-    int get(int key); // 读取lru中key值对应的vaule，并将节点置头部，不存在则返回-1，
+    int get(int key);
 
-    void put(int key, int value); // 将（key，value）放入lru
+    void put(int key, int value);
 
-    std::shared_ptr<DLinkedNode> getTail(); // 返回lru尾部节点，即换出节点
-
-    int size() const;
-
+    std::pair<int,int> getTail()const ;
   private:
-    std::unordered_map<int, std::shared_ptr<DLinkedNode>> cache; //可通过key快速定位节点
-    std::shared_ptr<DLinkedNode> head;
-    std::shared_ptr<DLinkedNode> tail;
-    int _size;
-    int capacity;
-
-    void addToHead(const std::shared_ptr<DLinkedNode>& node);
-
-    void removeNode(const std::shared_ptr<DLinkedNode>& node);
-
-    void moveToHead(const std::shared_ptr<DLinkedNode>& node);
-
-    std::shared_ptr<DLinkedNode> removeTail();
+    int cap;
+    std::list<std::pair<int, int>> cache{};
+    std::unordered_map<int, std::list<std::pair<int, int>>::iterator> map{};
 };
+
+
 
 #endif // STORAGEBUFFERMANAGER_LRUCACHE_H
